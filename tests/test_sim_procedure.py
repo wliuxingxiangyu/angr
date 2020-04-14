@@ -31,8 +31,9 @@ def test_ret_float():
     nose.tools.assert_equal(s2.solver.eval(s2.regs.st0.raw_to_fp()), 12.5)
 
 def test_syscall_and_simprocedure():
-    bin_path = os.path.join(BIN_PATH, 'tests', 'cgc', 'CADET_00002')
-    proj = angr.Project(bin_path)
+    # bin_path = os.path.join(BIN_PATH, 'tests', 'cgc', 'CADET_00002')
+    sample_path = "/home/wanghuozhu/ws/other/angr-doc/examples/fauxware/fauxware"
+    proj = angr.Project(sample_path, load_options={'auto_load_libs':False})
     cfg = proj.analyses.CFGFast(normalize=True)
 
     # check syscall
